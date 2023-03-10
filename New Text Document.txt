@@ -1,0 +1,161 @@
+print("<script>")
+    print("      $(function () {")
+    print("        //Initialize Select2 Elements")
+    print("        $('.select2').select2()")
+
+    print("//Initialize Select2 Elements")
+    sep="$('.select2bs4').select2({"
+    print(sep)
+    print("          theme: 'bootstrap4'")
+    sep="        })"
+    print(sep)
+
+    print("        //Datemask dd/mm/yyyy")
+    print("        $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })")
+    print("        //Datemask2 mm/dd/yyyy")
+    print("        $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })")
+    print("        //Money Euro")
+    print("        $('[data-mask]').inputmask()")
+
+    print("        //Date picker")
+    sep="        $('#reservationdate').datetimepicker({"
+    print(sep)
+    print("          format: 'L'")
+    sep="        });"
+    print(sep)
+
+    print("        //Date and time picker")
+    print("        $('#reservationdatetime').datetimepicker({ icons: { time: 'far fa-clock' } });")
+
+    print("        //Date range picker")
+    print("        $('#reservation').daterangepicker()")
+    print("        //Date range picker with time picker")
+    sep="        $('#reservationtime').daterangepicker({"
+    print(sep)
+    print("          timePicker: true,")
+    print("          timePickerIncrement: 30,")
+    print("          locale: {")
+    print("            format: 'MM/DD/YYYY hh:mm A'")
+    print("          }")
+    sep="       })"
+    print(sep)
+    print("        //Date range as a button")
+    sep="        $('#daterange-btn').daterangepicker("
+    print(sep)
+    print("          {")
+    print("            ranges: {")
+    print("              'Today': [moment(), moment()],")
+    print("              'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],")
+    print("              'Last 7 Days': [moment().subtract(6, 'days'), moment()],")
+    print("              'Last 30 Days': [moment().subtract(29, 'days'), moment()],")
+    print("             'This Month': [moment().startOf('month'), moment().endOf('month')],")
+    print("              'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]")
+    print("            },")
+    print("            startDate: moment().subtract(29, 'days'),")
+    print("            endDate: moment()")
+    print("          },")
+    print("          function (start, end) {")
+    print("            $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))")
+    sep="         })"
+    print(sep)    
+
+    print("        //Timepicker")
+    sep="        $('#timepicker').datetimepicker({"
+    print(sep)
+    print("          format: 'LT'")
+    sep="        })"
+    print(sep)
+
+    print("        //Bootstrap Duallistbox")
+    print("        $('.duallistbox').bootstrapDualListbox()")
+
+    print("        //Colorpicker")
+    print("        $('.my-colorpicker1').colorpicker()")
+    print("        //color picker with addon")
+    print("        $('.my-colorpicker2').colorpicker()")
+
+    sep="        $('.my-colorpicker2').on('colorpickerChange', function (event) {"
+    print(sep)
+    print("          $('.my-colorpicker2 .fa-square').css('color', event.color.toString());")
+    sep="        })"
+    print(sep)
+
+    sep='        $("input[data-bootstrap-switch]").each(function () {'
+    print(sep)
+    print("          $(this).bootstrapSwitch('state', $(this).prop('checked'));")
+    sep="        })"
+    print(sep)
+
+    sep="      })"
+    print(sep)
+    print("      // BS-Stepper Init")
+    sep="      document.addEventListener('DOMContentLoaded', function () {"
+    print(sep)
+    print("        window.stepper = new Stepper(document.querySelector('.bs-stepper'))")
+    sep="      })"
+    print(sep)
+
+    print("      // DropzoneJS Demo Code Start")
+    print("      Dropzone.autoDiscover = false")
+
+    print("      // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument")
+    print('      var previewNode = document.querySelector("#template")')
+    print('     previewNode.id = ""')
+    print("      var previewTemplate = previewNode.parentNode.innerHTML")
+    print("      previewNode.parentNode.removeChild(previewNode)")
+
+    sep="      var myDropzone = new Dropzone(document.body, { // Make the whole body a dropzone"
+    print(sep)
+    print('        url: "/target-url", // Set the url')
+    print("        thumbnailWidth: 80,")
+    print("        thumbnailHeight: 80,")
+    print("        parallelUploads: 20,")
+    print("       previewTemplate: previewTemplate,")
+    print("        autoQueue: false, // Make sure the files aren't queued until manually added")
+    print('        previewsContainer: "#previews", // Define the container to display the previews')
+    print('        clickable: ".fileinput-button" // Define the element that should be used as click trigger to select files.')
+    sep="      })"
+    print(sep)
+
+    sep='      myDropzone.on("addedfile", function (file) {'
+    print(sep)
+    print("       // Hookup the start button")
+    sep='        file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile")(file) }'
+    print(sep)
+    sep="      })"
+    print(sep)
+
+    print("      // Update the total progress bar")
+    sep='      myDropzone.on("totaluploadprogress", function (progress) {'
+    print(sep)
+    print('        document.querySelector("#total-progress .progress-bar").style.width = progress + "%"')
+    sep="      })"
+    print(sep)
+
+    sep='      myDropzone.on("sending", function (file) {'
+    print(sep)
+    print("        // Show the total progress bar when upload starts")
+    print('        document.querySelector("#total-progress").style.opacity = "1"')
+    print("        // And disable the start button")
+    print('        file.previewElement.querySelector(".start").setAttribute("disabled", "disabled")')
+    sep="      })"
+    print(sep)
+
+    print("      // Hide the total progress bar when nothing's uploading anymore")
+    sep='      myDropzone.on("queuecomplete", function (progress) {'
+    print(sep)
+    print('        document.querySelector("#total-progress").style.opacity = "0"')
+    sep="      })"
+    print(sep)
+
+    print("      // Setup the buttons for all transfers")
+    print('      // The "add files" button doesnt need to be setup because the config')
+    print("      // `clickable` has already been specified.")
+    print('      document.querySelector("#actions .start").onclick = function () {')
+    print("        myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))")
+    print("      }")
+    print('      document.querySelector("#actions .cancel").onclick = function () {')
+    print("        myDropzone.removeAllFiles(true)")
+    print("      }")
+    print("  // DropzoneJS Demo Code End")
+    print("    </script>")
